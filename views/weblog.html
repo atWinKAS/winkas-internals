@@ -22,7 +22,6 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/newnote">New Note</a></li>
                 <li><a href="/discuss">Discuss</a></li>
-				<li><a href="/weblog">Weblog</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -39,37 +38,10 @@
         <!--<h2>Latest Notes</h2>-->
 
         <div class="container">
-            <!--Filter notes list by member name-->
-            <form action="/" method="post">
-                <div class="row clearfix">
-                    <div class="col-md-4 column">
-                        <select id="memberName" name="memberName" class="form-control">
-                            <option value="">(Show All Members)</option>
-                            <option value="Mark">Mark</option>
-                            <option value="David">David</option>
-                            <option value="John">John</option>
-                            <option value="Mary">Mary</option>
-                            <option value="Bob">Bob</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 column">
-                        <!-- Button -->
-                        <button id="btnFilterNotes" name="btnFilterNotes" class="btn btn-primary" type="submit">Filter Notes...</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <br />
-
-        <div class="container">
             <div class="col-md-12 column list-group">
-                {% for note in notes %}
+                {% for item in items %}
                 <div class="list-group-item">
-                    <div>Note from <em><strong>{{ note.memberName }}</strong></em> on: {{ note.createdOn.toDateString() }}
-                        - for project: <strong>{{ note.project }}</strong></div>
-                    <div><strong>Work yesterday:</strong> {{ note.workYesterday }}</div>
-                    <div><strong>Work today:</strong> {{ note.workToday }}</div>
-                    <div><strong>Impediment:</strong> {{ note.impediment }}</div>
+                    <div>Uid <em><strong>{{ item.Uid }}</strong></em> Url: {{ item.Url }} </div>                    
                 </div>
                 {% endfor %}
             </div>

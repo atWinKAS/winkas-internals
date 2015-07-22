@@ -11,7 +11,7 @@ var routes = require('./routes/index');
 var mongoose = require('mongoose');
 
 // Connect to MongoDB...
-mongoose.connect('mongodb://localhost:27017/standupmeetingnotes');
+mongoose.connect('mongodb://localhost:27017/winkasdump');
 
 var app = express();
 

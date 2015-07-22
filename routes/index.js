@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var standupCtrl = require('../controllers/standup.server.controller');
+var weblogCtrl = require('../controllers/weblog.server.controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -20,6 +21,11 @@ router.get('/newnote', function(req, res) {
 /* POST New Note page. */
 router.post('/newnote', function(req, res) {
     return standupCtrl.create(req, res);
+});
+
+/* GET home page. */
+router.get('/weblog', function(req, res) {
+  return weblogCtrl.list(req, res);
 });
 
 module.exports = router;
