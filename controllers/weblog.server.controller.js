@@ -5,7 +5,7 @@ exports.list = function(req, res) {
 
     query
         .limit(100)
-        .exec(function(err, results){
+        .exec(function(err, results){			
 	       res.render('weblog', {title: 'Weblog items', items: results});
         });
 

@@ -22,6 +22,7 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/newnote">New Note</a></li>
                 <li><a href="/discuss">Discuss</a></li>
+				<li><a href="/weblog">Weblog</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -38,12 +39,57 @@
         <!--<h2>Latest Notes</h2>-->
 
         <div class="container">
-            <div class="col-md-12 column list-group">
-                {% for item in items %}
-                <div class="list-group-item">
-                    <div>Uid <em><strong>{{ item.Uid }}</strong></em> Url: {{ item.Url }} </div>                    
-                </div>
-                {% endfor %}
+            <div class="col-md-12">
+			{% for item in items %}
+				<div class="panel panel-primary">
+					<div class="panel-heading">UID: <strong>{{ item.Uid }}</strong></div>
+					<div class="panel-body">
+						<p><strong>{{ item.RequestType }}</strong> {{ item.Url }}</p> 
+						<p><strong>Area:</strong> {{ item.Area }} </p> 
+						<p><strong>User:</strong> {{ item.UserName }} ( Authenticated: {{ item.UserAuthenticated }}) </p> 
+					</div>
+				
+					<table class="table">
+						<thead>
+						  <tr>
+							<th>IpAddress</th>
+							<th>Controller</th>
+							<th>Action</th>
+							<th>Request</th>
+							<th>Response</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td>{{ item.IpAddress }}</td>
+							<td>{{ item.Controller }}</td>
+							<td>{{ item.Action }}</td>
+							<td>{{ item.RequestDate.toISOString() }}</td>
+							<td>{{ item.ResponseDate.toISOString() }}</td>
+						  </tr>
+						</tbody>
+					</table>
+				
+					<div class="panel-footer">
+						<div class="form-horizontal">
+							<div class="form-group">
+								<label for="input1" class="col-sm-2 control-label">Request</label>
+								<div class="col-sm-10">
+									<textarea class="form-control" rows="5">{{ item.RequestBody }}</textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="input2" class="col-sm-2 control-label">Response</label>
+								<div class="col-sm-10">
+									<textarea class="form-control" rows="5">{{ item.ResponseBody }}</textarea>
+								</div>
+							</div>							
+						</div>
+					</div>
+				
+				</div>		
+			{% endfor %}
+				
             </div>
 
         </div>
