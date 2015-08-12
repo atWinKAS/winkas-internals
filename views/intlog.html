@@ -21,11 +21,11 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-				<li><a href="/notes">Notes</a></li>
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/notes">Notes</a></li>
                 <li><a href="/newnote">New Note</a></li>
-                <li class="active"><a href="/weblog">Weblog</a></li>
-				<li><a href="/intlog">Intlog</a></li>
+				<li><a href="/weblog">Weblog</a></li>
+                <li class="active"><a href="/intlog">Intlog</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -36,6 +36,7 @@
     <div class="text-center">
         <h2>Winkas Internals</h2>        
     </div>
+
 
     <div>
         <!--<h2>Latest Notes</h2>-->
@@ -56,33 +57,21 @@
 				<table class="table">
 						<thead>
 						  <tr>
-							<th>Area</th>
-							<th>RT</th>
-							<th>Controller</th>
-							<th>Action</th>						    
-							<th>Uid</th>
-							<th>Url</th>
-							<th>User</th>
-							<th>IP</th>
-							<th>RequestDate</th>
-							<th>ResponseDate</th>
+							<th>IId</th>
+							<th>GIId</th>
+							<th>Class</th>
+							<th>Method</th>						    
 							<th>Time</th>
 						  </tr>
 						</thead>
 						<tbody>
 							{% for item in items %}
 						  <tr>
-							<td>{{ item.Area }}</td>
-							<td>{{ item.RequestType }}</td>
-							<td>{{ item.Controller }}</td>
-							<td>{{ item.Action }}</td>							
-							<td>{{ item.Uid }}</td>
-							<td>{{ item.Url }}</td>
-							<td>{{ item.UserName }}</td>
-							<td>{{ item.IpAddress }}</td>
-							<td>{{ item.RequestDate.toISOString() }}</td>
-							<td>{{ item.ResponseDate.toISOString() }}</td>
-							<td>{{ (item.ResponseDate - item.RequestDate) }}</td>							
+							<td>{{ item.InvocationId }}</td>
+							<td>{{ item.GlobalInvocationId }}</td>
+							<td>{{ item.Class }}</td>
+							<td>{{ item.Method }}</td>							
+							<td>{{ item.TimeElapsed }}</td>					
 						  </tr>
 						    {% endfor %}
 						  

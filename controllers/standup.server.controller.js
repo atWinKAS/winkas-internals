@@ -6,7 +6,7 @@ exports.list = function(req, res) {
     query.sort({ createdOn: 'desc'})
         .limit(12)
         .exec(function(err, results){
-           res.render('index', {title: 'Standup - List', notes: results});
+           res.render('notes', {title: 'Standup - List', notes: results});
         });
 
 };
@@ -23,7 +23,7 @@ exports.filterByMember = function(req, res) {
     }
 
     query.exec(function(err, results) {
-        res.render('index', { title: 'Standup - List', notes: results });
+        res.render('notes', { title: 'Standup - List', notes: results });
     });
 };
 
