@@ -28,6 +28,9 @@ router.post('/newnote', function(req, res) {
 router.get('/weblog', function(req, res) {
   return weblogCtrl.list(req, res);
 });
+router.get('/weblog/:id', function(req, res) {
+  return weblogCtrl.single(req, res);
+});
 
 router.get('/intlog', function(req, res) {
   return intlogCtrl.list(req, res);

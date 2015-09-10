@@ -10,3 +10,13 @@ exports.list = function(req, res) {
         });
 
 };
+
+exports.single = function(req, res) {
+    var query = Weblog.findById(req.params.id);
+ 
+     query
+         .exec(function(err, result){			
+           res.render('weblogitem', {title: 'Weblog item', item: result});
+         });
+
+};

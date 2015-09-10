@@ -22,8 +22,8 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-				<li><a href="/notes">Notes</a></li>
-                <li><a href="/newnote">New Note</a></li>
+				<!--<li><a href="/notes">Notes</a></li>
+                <li><a href="/newnote">New Note</a></li>-->
                 <li class="active"><a href="/weblog">Weblog</a></li>
 				<li><a href="/intlog">Intlog</a></li>
             </ul>
@@ -56,6 +56,7 @@
 				<table class="table">
 						<thead>
 						  <tr>
+							<th>Id</th>
 							<th>Area</th>
 							<th>RT</th>
 							<th>Controller</th>
@@ -72,6 +73,7 @@
 						<tbody>
 							{% for item in items %}
 						  <tr>
+							<td><a href={{ '/weblog/' + item._id.toString() }}>{{ item._id.toString() }}</a></td>
 							<td>{{ item.Area }}</td>
 							<td>{{ item.RequestType }}</td>
 							<td>{{ item.Controller }}</td>
