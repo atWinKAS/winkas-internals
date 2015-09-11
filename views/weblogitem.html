@@ -2,11 +2,18 @@
 <html>
 <head>
     <title>{{ title }}</title>
-	<link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+	<link rel='stylesheet' href='/css/style.css' />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    
+    <link rel="stylesheet" type="text/css" href="/css/pretty-json.css" />
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/underscore-min.js" ></script>
+    <script type="text/javascript" src="/js/backbone-min.js" ></script>
+
+    <script type="text/javascript" src="/js/pretty-json-min.js" ></script>
+    
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -82,8 +89,13 @@
 				    RequestBody
                 </div>
                 <div class="col-md-10">
-				    {{ item.RequestBody }}
-                </div>          
+                    <div id="requestbody" style="display: none;">
+                        {{ item.RequestBody }}
+                    </div>
+                    <div>
+                        <span id="resultRequestBody"></span>
+                    </div>
+                </div>
             </div>
             
             <div class="row">
@@ -127,7 +139,12 @@
 				    ResponseBody
                 </div>
                 <div class="col-md-10">
-				    {{ item.ResponseBody }}
+				    <div id="responsebody" style="display: none;">
+                        {{ item.ResponseBody }}
+                    </div>
+                    <div>
+                        <span id="resultResponseBody"></span>
+                    </div>
                 </div>          
             </div>
             
@@ -170,6 +187,46 @@
         </div>
 	</div>
 </div><!-- /.container -->
+
+<script>
+    $(document).ready(function() {
+
+        var el = {
+            inputRequest: $('#requestbody'),
+            resultRequest: $('#resultRequestBody'),
+            inputResponse: $('#responsebody'),
+            resultResponse: $('#resultResponseBody')
+        };
+        
+            var indata = el.inputRequest[0].innerText;
+            var o;
+            try { 
+                o = JSON.parse(indata);
+                var node1 = new PrettyJSON.view.Node({ 
+                el:el.resultRequest, 
+                data:o
+            });
+            }
+            catch(e){ 
+                el.resultRequest[0].innerText = indata;
+            }
+
+
+            indata = el.inputResponse[0].innerText;
+            try { 
+                o = JSON.parse(indata);
+                var node2 = new PrettyJSON.view.Node({ 
+                el:el.resultResponse, 
+                data:o
+            });
+            }
+            catch(e){
+                el.resultResponse[0].innerText = indata;
+            }
+            
+               
+    });
+</script>
 
 </body>
 </html>
