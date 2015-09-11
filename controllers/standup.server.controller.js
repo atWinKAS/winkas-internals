@@ -1,4 +1,5 @@
 var Standup = require('../models/standup.server.model.js');
+var viewbag = require('../viewbag');
 
 exports.list = function(req, res) {
     var query = Standup.find();

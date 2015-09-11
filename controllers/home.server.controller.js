@@ -1,4 +1,7 @@
+var viewbag = require('../viewbag');
+
 exports.get = function(req, res) {
-           res.render('index', {title: 'Home'});
+    var appData = viewbag.getAppData(req);  
+    res.render('index', { title: 'Home', viewbag : appData });
 };
 

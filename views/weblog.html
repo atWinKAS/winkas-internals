@@ -24,8 +24,17 @@
                 <li><a href="/">Home</a></li>
 				<!--<li><a href="/notes">Notes</a></li>
                 <li><a href="/newnote">New Note</a></li>-->
-                <li class="active"><a href="/weblog">Weblog</a></li>
-				<li><a href="/intlog">Intlog</a></li>
+                <!--<li class="active"><a href="/weblog">Weblog</a></li>
+				<li><a href="/intlog">Intlog</a></li>-->
+				
+				{% if (viewbag.isAuthenticated) %} <li  class="active"><a href="/weblog">Weblog</a></li> {% endif %}   
+                <!--<li><a href="/weblog">Weblog</a></li>-->
+                
+                {% if (viewbag.isAuthenticated) %} <li><a href="/intlog">Intlog</a></li> {% endif %}
+                <!--<li><a href="/intlog">Intlog</a></li>-->
+                
+                {% if (viewbag.isAuthenticated) %} <li><a href="/profile">Profile</a></li> {% endif %}
+				
             </ul>
         </div><!--/.nav-collapse -->
     </div>

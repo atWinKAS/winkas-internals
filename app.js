@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 
@@ -12,6 +15,8 @@ var mongoose = require('mongoose');
 
 // Connect to MongoDB...
 mongoose.connect('mongodb://localhost:27017/winkasdump');
+
+require('./config/passport')(passport);
 
 var app = express();
 
@@ -30,6 +35,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// required for passport
+app.use(session({ secret: 'winkasinternalsmanagementtool' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use('/', routes);
 
