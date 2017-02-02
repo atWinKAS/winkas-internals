@@ -1,0 +1,2 @@
+1. Add refresh buttons on both views
+2. Add clear data buttons on both views
